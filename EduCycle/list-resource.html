@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Give a resource | EduCycle</title>
+  <meta name="description" content="EduCycle: donate, lend and exchange textbooks, components and lab equipment with other students.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body data-page="list" data-active="listings">
+  <div id="site-nav"></div>
+
+  <main id="main">
+    <div class="container form-width page">
+      <div class="page-head"><h1 id="pageTitle">Give a resource</h1></div>
+      <p class="page-sub" id="pageSub">Donate, lend or exchange something another student can use.</p>
+
+      <form id="resourceForm" novalidate>
+        <h2 class="form-section">The item</h2>
+        <div class="field mb-3">
+          <label class="form-label" for="resName">Name</label>
+          <input type="text" class="form-control" id="resName" placeholder="e.g. Arduino Uno R3" maxlength="60">
+          <div class="invalid-feedback"></div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-sm-6 field"><label class="form-label" for="resCategory">Category</label><select class="form-select" id="resCategory"></select><div class="invalid-feedback"></div></div>
+          <div class="col-sm-6 field"><label class="form-label" for="resCondition">Condition</label><select class="form-select" id="resCondition"></select><div class="invalid-feedback"></div></div>
+        </div>
+        <div class="field mb-3">
+          <label class="form-label" for="resDescription">Description</label>
+          <textarea class="form-control" id="resDescription" rows="4" maxlength="300" placeholder="What is included, how it has been used, and any conditions."></textarea>
+          <div class="d-flex justify-content-between"><div class="invalid-feedback"></div><span class="form-hint ms-auto"><span id="descCount">0</span>/300</span></div>
+        </div>
+
+        <h2 class="form-section">How you will give it</h2>
+        <div class="field mb-3" id="typeField">
+          <div class="seg-radio" role="radiogroup" aria-label="Donate, lend or exchange">
+            <div class="opt"><input type="radio" name="type" id="typeDonate" value="Donate"><label for="typeDonate">Donate</label></div>
+            <div class="opt"><input type="radio" name="type" id="typeLend" value="Lend"><label for="typeLend">Lend</label></div>
+            <div class="opt"><input type="radio" name="type" id="typeExchange" value="Exchange"><label for="typeExchange">Exchange</label></div>
+          </div>
+          <div class="invalid-feedback mt-2">Choose Donate, Lend or Exchange.</div>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-sm-8 field"><label class="form-label" for="resLocation">Pick-up location</label><input type="text" class="form-control" id="resLocation" placeholder="e.g. Main Library Gate" maxlength="60"><div class="invalid-feedback"></div></div>
+          <div class="col-sm-4 field"><label class="form-label" for="resQuantity">Quantity</label><input type="number" class="form-control" id="resQuantity" value="1" min="1" max="20"><div class="invalid-feedback"></div></div>
+        </div>
+
+        <h2 class="form-section">Who it suits</h2>
+        <div class="row g-3 mb-3">
+          <div class="col-sm-7 field"><label class="form-label" for="resDepartment">Department</label><select class="form-select" id="resDepartment"></select><div class="invalid-feedback"></div></div>
+          <div class="col-sm-5 field"><label class="form-label" for="resSemester">Semester</label><select class="form-select" id="resSemester"></select><div class="invalid-feedback"></div></div>
+        </div>
+
+        <h2 class="form-section">Photo <span class="text-muted fw-normal text-lowercase">(optional)</span></h2>
+        <div class="field mb-4">
+          <label class="upload-box d-block" for="resImage"><div class="fw-medium">Choose an image</div><div class="form-hint">JPG or PNG, up to 2 MB</div></label>
+          <input type="file" id="resImage" accept="image/*" class="visually-hidden">
+          <div class="text-center mt-2"><img id="imagePreview" class="upload-preview d-none" alt="Selected image preview"></div>
+          <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-eco btn-lg" type="submit" id="submitBtn">List resource</button>
+          <a class="btn btn-outline-eco btn-lg" href="my-listings.html">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast-area"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="data/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/validators.js"></script>
+  <script src="js/list-resource.js"></script>
+</body>
+</html>
