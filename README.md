@@ -1,5 +1,6 @@
 # EduCycle
 
+<<<<<<< HEAD
 EduCycle is a campus platform where students **donate, lend and exchange** textbooks, notes, calculators, electronics and lab equipment. Exchanges take place only at **pickup points approved by an administrator**, and students can report problems through a tracked **grievance** system.
 
 Version 2 replaces the original static prototype, which used JSON files, `sessionStorage` and a hard-coded user. It now has a Node.js/Express backend, MongoDB persistence, real authentication, a separate admin dashboard and a redesigned interface.
@@ -60,11 +61,35 @@ Version 2 replaces the original static prototype, which used JSON files, `sessio
 | Database | MongoDB (NoSQL) with Mongoose only (no SQL anywhere) |
 | Auth | Server-side sessions (`express-session` + `connect-mongo`), bcryptjs (12 rounds) |
 | Security | Helmet (CSP and security headers), CSRF tokens, `express-rate-limit`, server-side validation |
+=======
+**Educational Resource Reuse and Exchange Platform**
+
+EduCycle is a campus platform that lets students donate, lend, borrow and exchange academic resources — textbooks, notes, electronics, calculators and lab equipment — instead of letting usable items sit unused. This repository contains the front-end prototype built for Evaluation 1.
+
+## Live features
+
+- **Browse** resources with search, type tabs (Donate / Lend / Exchange), category filters and sort
+- **Resource Details** with a status tracker (Pending → Accepted → Handed Over → Completed)
+- **Request Board** for posting and offering against things students still need
+- **Your Activity** dashboard with estimated impact (money saved, CO₂ avoided) on completed exchanges
+- **My Listings** to manage resources you've posted
+- **List a Resource** form with inline validation
+- Simple **Log in / Create account** flow
+
+## Tech stack
+
+- HTML5, CSS3 (custom styling)
+- Vanilla JavaScript (no framework)
+- A JSON file as a mock data layer — there is no real backend or database yet
+
+There is no build step. The app loads its data once from `data/data.json` and then keeps it in the browser's `sessionStorage` for the rest of the session, updating that cached copy as you interact with the app.
+>>>>>>> 3563a5a6b42d3851af8952636aa532cbdc32cc50
 
 ## Project structure
 
 ```
 EduCycle/
+<<<<<<< HEAD
 ├── frontend/                  Static site, served by the backend
 │   ├── index.html … 404.html  One file per page (student pages + admin-login.html + admin.html)
 │   └── assets/
@@ -265,3 +290,58 @@ These measures improve security, but this project has not had a professional sec
 | Impact numbers | Estimated ₹ and CO₂ from guessed factors | Only real counts from the database |
 
 > Note: the original JavaScript files (`js/main.js`, `browse.js` and the others) were not among the uploaded files, so the frontend scripts were rewritten against the new API. The behaviour of the original pages was preserved, as shown by their HTML.
+=======
+├── index.html              Home
+├── browse.html              Browse
+├── resource-details.html    Resource details + status tracker
+├── login.html                Log in / Create account
+├── request-board.html        Request Board
+├── activity.html              Your Activity
+├── my-listings.html           My Listings
+├── list-resource.html         List a Resource form
+├── css/
+│   └── style.css              All styling
+├── data/
+│   ├── data.json              Dummy data: users, resources, requests, board posts, impact factors
+│   └── data.js                 Data access helpers
+└── js/
+    ├── main.js                 Shared: navbar, data loading, toasts, impact calculation
+    ├── validators.js           Shared form validation
+    ├── home.js
+    ├── browse.js
+    ├── details.js
+    ├── auth.js
+    ├── list-resource.js
+    ├── board.js
+    ├── activity.js
+    └── my-listings.js
+```
+
+## Running it locally
+
+No installation needed. Either:
+
+- Open `index.html` directly in a browser, or
+- Serve the folder locally for the most reliable experience, e.g.:
+  ```bash
+  npx serve .
+  ```
+  or, with Python:
+  ```bash
+  python3 -m http.server
+  ```
+
+## Roadmap
+
+The current prototype uses estimated impact figures and a dummy JSON data layer. The next stage replaces this with:
+
+- A React front end
+- A Node.js / Express API
+- A MySQL database for real persistence and accounts
+
+## SDG alignment
+
+- **SDG 4 – Quality Education**: keeps learning material within reach regardless of cost
+- **SDG 10 – Reduced Inequalities**: makes exchange free or low-cost for every student
+- **SDG 12 – Responsible Consumption and Production**: keeps usable items in circulation instead of discarded
+>>>>>>> 3563a5a6b42d3851af8952636aa532cbdc32cc50
