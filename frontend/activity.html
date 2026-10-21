@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your activity | EduCycle</title>
+  <meta name="description" content="Track resource requests and exchanges on EduCycle.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="activity" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container container-narrow">
+        <h1>Your activity</h1>
+        <p>Requests you have sent and received. Each exchange moves from <strong>Requested</strong> to <strong>Accepted</strong>, <strong>Handed over</strong> and <strong>Completed</strong>.</p>
+      </div>
+    </header>
+
+    <div class="container container-narrow page-body">
+      <ul class="nav nav-underline mb-4" id="tabs" role="tablist" aria-label="Exchanges">
+        <li class="nav-item" role="presentation"><button class="nav-link active" type="button" role="tab" aria-selected="true" data-tab="needs">Needs your action<span class="count" data-n="needs"></span></button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-tab="waiting">Waiting on others<span class="count" data-n="waiting"></span></button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-tab="history">History<span class="count" data-n="history"></span></button></li>
+      </ul>
+      <div id="list" role="tabpanel" aria-live="polite"></div>
+    </div>
+
+    <!-- Accept / change pickup point -->
+    <div class="modal fade" id="acceptModal" tabindex="-1" aria-labelledby="acceptTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="acceptForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="acceptTitle">Accept request</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <p id="acceptIntro" class="mb-3"></p>
+            <div class="mb-3">
+              <label class="form-label" for="acceptLocation">Pickup point<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="acceptLocation" name="locationId" required></select>
+              <div class="form-text">Only approved pickup points are listed.</div>
+              <div class="invalid-feedback" data-error-for="locationId"></div>
+            </div>
+            <div id="acceptNoteWrap">
+              <label class="form-label" for="acceptNote">Note for the student<span class="opt">(optional)</span></label>
+              <textarea class="form-control" id="acceptNote" name="ownerNote" rows="2" maxlength="300" placeholder="e.g. I am free after 3 pm on weekdays."></textarea>
+              <div class="invalid-feedback" data-error-for="ownerNote"></div>
+            </div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary" id="acceptSubmit">Accept request</button></div>
+        </form>
+      </div></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/activity.js"></script>
+</body>
+</html>

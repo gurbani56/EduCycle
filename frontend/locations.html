@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pickup points | EduCycle</title>
+  <meta name="description" content="Approved campus pickup and drop-off points for EduCycle exchanges, and how to suggest a new one.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="locations">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container">
+        <h1>Pickup points</h1>
+        <p>EduCycle exchanges take place only at locations an administrator has reviewed and approved. Students choose one of these when listing an item or accepting a request.</p>
+      </div>
+    </header>
+
+    <div class="container page-body">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <h2 class="h3 mb-3">Approved locations</h2>
+          <div id="approved"></div>
+        </div>
+        <div class="col-lg-5">
+          <div class="panel" id="suggestPanel">
+            <h2 class="panel-title"><i class="bi bi-plus-circle" aria-hidden="true"></i>Suggest a new location</h2>
+            <div id="suggestBody">
+              <form id="suggestForm" novalidate>
+                <div class="form-alert d-none"></div>
+                <p class="small text-muted">Suggest a public, easy-to-find spot on campus. It becomes available to everyone once an administrator approves it. You will be notified of the decision.</p>
+                <div class="mb-3"><label class="form-label" for="sgName">Location name<span class="req" aria-hidden="true">*</span></label><input class="form-control" id="sgName" name="name" maxlength="80" placeholder="e.g. Central library entrance"><div class="invalid-feedback" data-error-for="name"></div></div>
+                <div class="mb-3"><label class="form-label" for="sgArea">Campus area or building<span class="req" aria-hidden="true">*</span></label><input class="form-control" id="sgArea" name="area" maxlength="120" placeholder="e.g. Academic block, ground floor"><div class="invalid-feedback" data-error-for="area"></div></div>
+                <div class="mb-3"><label class="form-label" for="sgDesc">How to find it<span class="opt">(optional)</span></label><textarea class="form-control" id="sgDesc" name="description" rows="3" maxlength="400" placeholder="Landmarks, opening hours, anything that helps."></textarea><div class="invalid-feedback" data-error-for="description"></div></div>
+                <button class="btn btn-primary" type="submit">Submit for review</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel" id="minePanel">
+            <h2 class="panel-title"><i class="bi bi-list-check" aria-hidden="true"></i>Your suggestions</h2>
+            <div id="mine"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/suggest-location.js"></script>
+  <script src="assets/js/pages/locations.js"></script>
+</body>
+</html>

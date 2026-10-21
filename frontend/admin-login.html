@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Administrator sign in | EduCycle</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-area="admin">
+  <main id="main" class="admin-auth">
+    <div class="auth-card">
+      <a class="brand mb-4" href="index.html"><span class="brand-mark" aria-hidden="true"><i class="bi bi-arrow-repeat"></i></span>EduCycle</a>
+      <span class="badge-ec b-dark mb-3"><i class="bi bi-shield-lock" aria-hidden="true"></i>Administrator area</span>
+      <h1 class="h2 mb-1">Sign in to the dashboard</h1>
+      <p class="text-muted small mb-4">For EduCycle administrators only. Student accounts cannot sign in here.</p>
+      <div class="alert alert-warning d-none" id="reasonAlert" role="alert"></div>
+      <form id="adminLoginForm" novalidate>
+        <div class="form-alert d-none"></div>
+        <div class="mb-3">
+          <label class="form-label" for="aEmail">Admin email</label>
+          <input class="form-control" type="email" id="aEmail" name="email" autocomplete="username" required>
+          <div class="invalid-feedback" data-error-for="email"></div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label" for="aPassword">Password</label>
+          <input class="form-control" type="password" id="aPassword" name="password" autocomplete="current-password" required>
+          <div class="invalid-feedback" data-error-for="password"></div>
+        </div>
+        <button class="btn btn-dark btn-lg w-100" type="submit">Sign in</button>
+      </form>
+      <p class="small text-muted mt-4 mb-0"><a href="login.html">Student login</a> · <a href="index.html">Back to EduCycle</a></p>
+    </div>
+  </main>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/admin-login.js"></script>
+</body>
+</html>

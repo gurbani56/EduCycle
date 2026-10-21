@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community requests | EduCycle</title>
+  <meta name="description" content="See what other students are looking for, or post what you need.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="board">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container container-narrow d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div><h1>Community requests</h1><p>Students post what they are looking for. If you have it, offer one of your listings and they can request it.</p></div>
+        <button class="btn btn-primary" type="button" id="openPost"><i class="bi bi-megaphone" aria-hidden="true"></i>Post a request</button>
+      </div>
+    </header>
+
+    <div class="container container-narrow page-body">
+      <div class="toolbar">
+        <ul class="nav nav-underline flex-grow-1 mb-0" id="typeTabs" role="tablist" aria-label="Filter by arrangement"></ul>
+        <div class="d-flex gap-2 align-items-center">
+          <label class="visually-hidden" for="catFilter">Category</label>
+          <select class="form-select form-select-sm" id="catFilter" style="width:auto"></select>
+          <div class="form-check form-switch mb-0 d-none" id="mineWrap"><input class="form-check-input" type="checkbox" role="switch" id="mineOnly"><label class="form-check-label small" for="mineOnly">My posts</label></div>
+        </div>
+      </div>
+      <div id="list"></div>
+      <div class="mt-4" id="pager"></div>
+    </div>
+
+    <!-- Post modal -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="postForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="postTitle">Post a community request</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <div class="mb-3"><label class="form-label" for="pTitle">What do you need?<span class="req" aria-hidden="true">*</span></label><input class="form-control" id="pTitle" name="title" maxlength="80" placeholder="e.g. Arduino Nano"><div class="invalid-feedback" data-error-for="title"></div></div>
+            <div class="row g-3 mb-3">
+              <div class="col-sm-6"><label class="form-label" for="pCategory">Category<span class="req" aria-hidden="true">*</span></label><select class="form-select" id="pCategory" name="category"></select><div class="invalid-feedback" data-error-for="category"></div></div>
+              <div class="col-sm-6"><label class="form-label" for="pType">You would like to<span class="req" aria-hidden="true">*</span></label>
+                <select class="form-select" id="pType" name="type"><option value="">Choose</option><option value="Donate">Receive it (donation)</option><option value="Lend">Borrow it</option><option value="Exchange">Exchange for it</option></select>
+                <div class="invalid-feedback" data-error-for="type"></div></div>
+            </div>
+            <div class="mb-3"><label class="form-label" for="pDuration">Needed for<span class="opt">(optional)</span></label><input class="form-control" id="pDuration" name="duration" maxlength="40" placeholder="e.g. 2 weeks, or Permanently"><div class="invalid-feedback" data-error-for="duration"></div></div>
+            <div><label class="form-label" for="pDesc">Details<span class="opt">(optional)</span></label><textarea class="form-control" id="pDesc" name="description" rows="3" maxlength="400" placeholder="Any specifications, and what you can offer in return."></textarea><div class="invalid-feedback" data-error-for="description"></div></div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary">Post request</button></div>
+        </form>
+      </div></div>
+    </div>
+
+    <!-- Offer modal -->
+    <div class="modal fade" id="offerModal" tabindex="-1" aria-labelledby="offerTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="offerForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="offerTitle">Offer one of your listings</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <p><span id="offerWho"></span> is looking for <strong id="offerFor"></strong>. They will get a notification with a link to your listing and can request it from there.</p>
+            <div class="alert alert-warning d-none" id="offerNone"><i class="bi bi-info-circle" aria-hidden="true"></i><div>You have no available listings to offer. <a href="list-resource.html">List a resource</a> first.</div></div>
+            <div id="offerFields">
+              <div class="mb-3"><label class="form-label" for="offerListing">Your listing<span class="req" aria-hidden="true">*</span></label><select class="form-select" id="offerListing" name="resourceId"></select><div class="invalid-feedback" data-error-for="resourceId"></div></div>
+              <label class="form-label" for="offerMessage">Message<span class="opt">(optional)</span></label><textarea class="form-control" id="offerMessage" name="message" rows="2" maxlength="300"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary" id="offerSubmit">Send offer</button></div>
+        </form>
+      </div></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/board.js"></script>
+</body>
+</html>

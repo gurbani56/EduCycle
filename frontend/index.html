@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EduCycle | Share academic resources on campus</title>
+  <meta name="description" content="EduCycle lets students donate, lend and exchange textbooks, notes, calculators and lab equipment at approved campus pickup points.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="home">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center gap-row">
+          <div class="col-lg-6">
+            <span class="eyebrow">Campus resource sharing</span>
+            <h1>Pass on the books and equipment you no longer need.</h1>
+            <p class="lead">EduCycle connects students who have textbooks, notes, calculators and lab equipment to spare with classmates who need them, for free, through donation, short-term loans or swaps.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary btn-lg" href="browse.html"><i class="bi bi-search" aria-hidden="true"></i>Browse resources</a>
+              <a class="btn btn-light-on-dark btn-lg" href="list-resource.html"><i class="bi bi-plus-lg" aria-hidden="true"></i>List a resource</a>
+            </div>
+            <ul class="hero-points">
+              <li><i class="bi bi-gift" aria-hidden="true"></i>Free to use, no selling</li>
+              <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Admin-approved pickup points</li>
+              <li><i class="bi bi-flag" aria-hidden="true"></i>Problems reviewed by admins</li>
+            </ul>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="showcase" id="showcase" aria-label="Recently listed resources">
+              <div class="showcase-head"><span>Available now</span><span class="live">Live listings</span></div>
+              <div id="showcaseBody">
+                <div class="p-3"><div class="skeleton" style="aspect-ratio:16/9"></div><div class="skeleton mt-3" style="height:18px;width:70%"></div><div class="skeleton mt-2" style="height:14px;width:45%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live figures (only rendered when there is data) -->
+    <section class="section-sm d-none" id="statsSection" aria-labelledby="statsTitle">
+      <div class="container">
+        <h2 class="visually-hidden" id="statsTitle">EduCycle at a glance</h2>
+        <div class="stats-strip" id="statsStrip"></div>
+        <p class="meta mt-2 mb-0">Figures are counted live from the EduCycle database.</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how-it-works" aria-labelledby="howTitle">
+      <div class="container">
+        <div class="section-head"><div><span class="eyebrow">How it works</span><h2 id="howTitle">Three steps from shelf to classmate</h2></div></div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num"><span class="ico"><i class="bi bi-plus-circle" aria-hidden="true"></i></span>Step 1 · List</div>
+            <h3>List what you can spare</h3>
+            <p>Describe the item, choose whether to donate, lend or exchange it, and pick an approved pickup point on campus.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num"><span class="ico"><i class="bi bi-chat-square-text" aria-hidden="true"></i></span>Step 2 · Connect</div>
+            <h3>Request what you need</h3>
+            <p>Send a request with a short message. The owner accepts or declines, and you are notified either way.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num"><span class="ico"><i class="bi bi-arrow-left-right" aria-hidden="true"></i></span>Step 3 · Exchange</div>
+            <h3>Meet at the pickup point</h3>
+            <p>Hand the item over at the agreed point and confirm it on EduCycle. Loans are completed when the item is returned.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section section-white" aria-labelledby="catTitle">
+      <div class="container">
+        <div class="section-head"><div><h2 id="catTitle">Browse by category</h2><p>Find what you need for your courses and labs.</p></div><a class="link-arrow" href="browse.html">All resources <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="cat-grid" id="catGrid"></div>
+      </div>
+    </section>
+
+    <!-- Recently listed -->
+    <section class="section" aria-labelledby="recentTitle">
+      <div class="container">
+        <div class="section-head"><div><h2 id="recentTitle">Recently listed</h2><p>New items from students on campus.</p></div><a class="link-arrow" href="browse.html?sort=newest">See all <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="row g-3" id="recentGrid">
+          <div class="col-sm-6 col-lg-3"><div class="skeleton skeleton-card"></div></div>
+          <div class="col-sm-6 col-lg-3"><div class="skeleton skeleton-card"></div></div>
+          <div class="col-sm-6 col-lg-3 d-none d-lg-block"><div class="skeleton skeleton-card"></div></div>
+          <div class="col-sm-6 col-lg-3 d-none d-lg-block"><div class="skeleton skeleton-card"></div></div>
+        </div>
+        <p class="text-center text-muted mt-4 mb-0">Can&rsquo;t find what you need? <a href="request-board.html">Post a community request</a> and let others know.</p>
+      </div>
+    </section>
+
+    <!-- Trust and safety -->
+    <section class="section pt-0" aria-labelledby="trustTitle">
+      <div class="container">
+        <div class="trust-band">
+          <div>
+            <span class="eyebrow">Safe exchanges</span>
+            <h2 id="trustTitle">Every exchange happens at a known place</h2>
+            <p class="text-muted mb-3">Students can only arrange pickups at locations reviewed by an EduCycle administrator. You can suggest a new spot, and it becomes available once approved.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-outline-secondary" href="safety.html">Read the safety guidelines</a>
+              <a class="btn btn-link" href="locations.html">See pickup points <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <ul class="trust-list">
+            <li><i class="bi bi-geo-alt" aria-hidden="true"></i><div><strong>Approved pickup points only.</strong> Listings with an unreviewed location cannot be requested.</div></li>
+            <li><i class="bi bi-person-check" aria-hidden="true"></i><div><strong>Signed-in students.</strong> You need an account to request, list or contact anyone.</div></li>
+            <li><i class="bi bi-flag" aria-hidden="true"></i><div><strong>Report a problem.</strong> Grievances go to the admin team, and you can follow their status.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section pt-0">
+      <div class="container">
+        <div class="cta-band">
+          <div><h2>Have something a classmate could use?</h2><p>Listing takes about two minutes. You decide whether to donate, lend or exchange it.</p></div>
+          <a class="btn btn-primary btn-lg" href="list-resource.html">List a resource</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/home.js"></script>
+</body>
+</html>

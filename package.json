@@ -1,0 +1,16 @@
+{
+  "name": "educycle",
+  "version": "2.0.0",
+  "private": true,
+  "description": "EduCycle \u2014 campus resource sharing (convenience scripts; the app lives in backend/ and frontend/)",
+  "scripts": {
+    "setup": "npm --prefix backend install",
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "migrate": "npm --prefix backend run migrate",
+    "create-admin": "npm --prefix backend run create-admin"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

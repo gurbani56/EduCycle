@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My listings | EduCycle</title>
+  <meta name="description" content="Manage the resources you have listed on EduCycle.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="listings" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div><h1>My listings</h1><p>Everything you have listed. Requests for your items appear in <a href="activity.html">Your activity</a>.</p></div>
+        <a class="btn btn-primary" href="list-resource.html"><i class="bi bi-plus-lg" aria-hidden="true"></i>List a resource</a>
+      </div>
+    </header>
+
+    <div class="container page-body">
+      <ul class="nav nav-underline mb-4" id="tabs" role="tablist" aria-label="Filter listings by availability">
+        <li class="nav-item" role="presentation"><button class="nav-link active" type="button" role="tab" aria-selected="true" data-status="">All<span class="count" data-n=""></span></button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-status="Available">Available<span class="count" data-n="Available"></span></button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-status="Reserved">Reserved<span class="count" data-n="Reserved"></span></button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-status="Unavailable">Unavailable<span class="count" data-n="Unavailable"></span></button></li>
+      </ul>
+      <div id="list" role="tabpanel"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/my-listings.js"></script>
+</body>
+</html>

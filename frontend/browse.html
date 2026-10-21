@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Browse resources | EduCycle</title>
+  <meta name="description" content="Search textbooks, notes, calculators, electronics and lab equipment shared by students on your campus.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="browse">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container">
+        <h1>Browse resources</h1>
+        <p>Items other students are donating, lending or offering to exchange. Request anything marked <strong>Available</strong> with an approved pickup point.</p>
+      </div>
+    </header>
+
+    <div class="container page-body">
+      <form class="toolbar" id="searchForm" role="search">
+        <div class="search-input flex-grow-1" style="max-width: 520px">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <label class="visually-hidden" for="q">Search resources</label>
+          <input class="form-control" type="search" id="q" name="q" placeholder="Search by title or description, e.g. Arduino, calculus" maxlength="80">
+        </div>
+        <div class="d-flex gap-2 align-items-center">
+          <button class="btn btn-outline-secondary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterCanvas" aria-controls="filterCanvas"><i class="bi bi-sliders" aria-hidden="true"></i>Filters <span class="badge-ec b-dark d-none" id="filterCount"></span></button>
+          <label class="visually-hidden" for="sort">Sort by</label>
+          <select class="form-select" id="sort" name="sort" style="width:auto">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="title">Title A–Z</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="row g-4">
+        <aside class="col-lg-3">
+          <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="filterCanvas" aria-labelledby="filterTitle">
+            <div class="offcanvas-header d-lg-none">
+              <h2 class="offcanvas-title h5" id="filterTitle">Filters</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#filterCanvas" aria-label="Close filters"></button>
+            </div>
+            <div class="offcanvas-body d-block">
+              <div class="filter-panel panel w-100" id="filters">
+                <div class="filter-group">
+                  <h2>Availability</h2>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="fAvailable" checked>
+                    <label class="form-check-label" for="fAvailable">Available now only</label>
+                  </div>
+                </div>
+                <fieldset class="filter-group">
+                  <legend><h2 class="mb-2">Listing type</h2></legend>
+                  <div id="fType"></div>
+                </fieldset>
+                <div class="filter-group">
+                  <h2><label for="fCategory">Category</label></h2>
+                  <select class="form-select form-select-sm" id="fCategory"></select>
+                </div>
+                <div class="filter-group">
+                  <h2><label for="fCondition">Condition</label></h2>
+                  <select class="form-select form-select-sm" id="fCondition"></select>
+                </div>
+                <div class="filter-group">
+                  <h2><label for="fDepartment">Suited for department</label></h2>
+                  <select class="form-select form-select-sm" id="fDepartment"></select>
+                </div>
+                <div class="filter-group">
+                  <h2><label for="fSemester">Semester</label></h2>
+                  <select class="form-select form-select-sm" id="fSemester"></select>
+                </div>
+                <div class="filter-group">
+                  <h2><label for="fLocation">Pickup point</label></h2>
+                  <select class="form-select form-select-sm" id="fLocation"></select>
+                </div>
+                <div class="filter-group">
+                  <button class="btn btn-outline-secondary btn-sm w-100" type="button" id="clearFilters">Clear all filters</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="col-lg-9" aria-labelledby="resultsHeading">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h2 class="h3 mb-0" id="resultsHeading" aria-live="polite">Loading resources…</h2>
+          </div>
+          <div class="active-chips" id="chips"></div>
+          <div class="row g-3" id="results"></div>
+          <div class="mt-4" id="pager"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/browse.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resource | EduCycle</title>
+  <meta name="description" content="Resource details on EduCycle.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="browse">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <div class="container page-body">
+      <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="browse.html">Browse</a></li><li class="breadcrumb-item active" aria-current="page" id="crumb">Resource</li></ol></nav>
+      <div id="detailRoot"><div class="d-flex align-items-center gap-2 text-muted py-5 justify-content-center" role="status"><span class="spinner-border spinner-border-sm" aria-hidden="true"></span>Loading resource…</div></div>
+      <section class="mt-5 d-none" id="moreSection" aria-labelledby="moreTitle">
+        <div class="section-head"><h2 class="h3" id="moreTitle">More in this category</h2><a class="link-arrow" id="moreLink" href="browse.html">See all <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+        <div class="row g-3" id="moreList"></div>
+      </section>
+    </div>
+
+    <!-- Request modal -->
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="requestForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="requestTitle">Request this resource</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <p class="mb-3">You are requesting <strong id="reqName"></strong>. The owner will be notified and can accept or decline.</p>
+            <div class="mb-3 d-none" id="offerWrap">
+              <label class="form-label" for="offerDetails">What can you offer in exchange?<span class="req" aria-hidden="true">*</span></label>
+              <textarea class="form-control" id="offerDetails" name="offerDetails" rows="2" maxlength="300" placeholder="e.g. An IR sensor pair in working condition"></textarea>
+              <div class="invalid-feedback" data-error-for="offerDetails"></div>
+            </div>
+            <label class="form-label" for="reqMessage">Message to the owner<span class="opt">(optional)</span></label>
+            <textarea class="form-control" id="reqMessage" name="message" rows="3" maxlength="300" placeholder="What you need it for, and for how long."></textarea>
+            <div class="d-flex justify-content-between"><div class="invalid-feedback" data-error-for="message"></div><span class="char-count ms-auto" id="reqCount"></span></div>
+            <div class="panel-muted mt-3 small"><i class="bi bi-geo-alt" aria-hidden="true"></i> Pickup point: <strong id="reqLoc"></strong>. The owner may suggest another approved point when accepting.</div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary" id="reqSubmit">Send request</button></div>
+        </form>
+      </div></div>
+    </div>
+
+    <!-- Report modal (creates a grievance) -->
+    <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="reportForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="reportTitle">Report this listing</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <p class="small text-muted">Reports go to the EduCycle administrators as a grievance. You can follow its status under <a href="grievances.html">Report a problem</a>.</p>
+            <div class="mb-3">
+              <label class="form-label" for="repCategory">What is wrong?<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="repCategory" name="category" required>
+                <option value="">Choose a reason</option>
+                <option value="listing_report">Inappropriate or misleading listing</option>
+                <option value="not_as_described">Resource not as described</option>
+                <option value="safety">Safety concern</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="invalid-feedback" data-error-for="category"></div>
+            </div>
+            <label class="form-label" for="repDescription">Details<span class="req" aria-hidden="true">*</span></label>
+            <textarea class="form-control" id="repDescription" name="description" rows="4" maxlength="2000" minlength="20" placeholder="Describe the problem (at least 20 characters)."></textarea>
+            <div class="invalid-feedback" data-error-for="description"></div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary" id="repSubmit">Submit report</button></div>
+        </form>
+      </div></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/details.js"></script>
+</body>
+</html>

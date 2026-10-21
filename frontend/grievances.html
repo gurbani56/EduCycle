@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report a problem | EduCycle</title>
+  <meta name="description" content="Submit a grievance to the EduCycle administrators and follow its status.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="grievances" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container">
+        <h1>Report a problem</h1>
+        <p>Tell the EduCycle administrators about a problem with a listing, an exchange, a pickup point, another student or the website. Only you and the administrators can see what you submit.</p>
+      </div>
+    </header>
+
+    <div class="container page-body">
+      <div class="alert alert-warning mb-4"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><div><strong>EduCycle is not an emergency service.</strong> If you or someone else is in immediate danger, contact campus security or your local emergency number first. You can report the incident here afterwards.</div></div>
+
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="alert alert-success d-none" id="successBox" role="status" tabindex="-1"></div>
+          <form class="panel" id="grievanceForm" novalidate>
+            <h2 class="panel-title"><i class="bi bi-flag" aria-hidden="true"></i>New grievance</h2>
+            <div class="form-alert d-none"></div>
+            <div class="mb-3">
+              <label class="form-label" for="gCategory">Category<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="gCategory" name="category" required></select>
+              <div class="form-text d-none" id="safetyNote"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Safety concerns are marked high priority for the administrators.</div>
+              <div class="invalid-feedback" data-error-for="category"></div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="gSubject">Subject<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-control" id="gSubject" name="subject" maxlength="120" placeholder="A short summary of the problem">
+              <div class="invalid-feedback" data-error-for="subject"></div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="gDescription">What happened?<span class="req" aria-hidden="true">*</span></label>
+              <textarea class="form-control" id="gDescription" name="description" rows="6" maxlength="2000" placeholder="Include dates, the people or items involved, and what you would like to happen. Please do not include passwords or bank details."></textarea>
+              <div class="d-flex justify-content-between"><div class="invalid-feedback" data-error-for="description"></div><span class="char-count ms-auto" id="gCount"></span></div>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label class="form-label" for="gRequest">Related exchange<span class="opt">(optional)</span></label>
+                <select class="form-select" id="gRequest" name="requestId"></select>
+                <div class="invalid-feedback" data-error-for="requestId"></div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="gResource">Related listing<span class="opt">(optional)</span></label>
+                <select class="form-select" id="gResource" name="resourceId"></select>
+                <div class="invalid-feedback" data-error-for="resourceId"></div>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit" id="gSubmit">Submit grievance</button>
+          </form>
+        </div>
+
+        <aside class="col-lg-5">
+          <div class="panel">
+            <h2 class="panel-title"><i class="bi bi-signpost-split" aria-hidden="true"></i>What happens next</h2>
+            <ol class="next-steps">
+              <li>You get a reference number (for example GRV-2026-ABC123). Keep it for your records.</li>
+              <li>Your grievance starts as <strong>Open</strong>. An administrator reviews it and may change it to <strong>In review</strong>.</li>
+              <li>The administrator writes a response and marks it <strong>Resolved</strong>, or <strong>Closed – not upheld</strong> with an explanation.</li>
+              <li>You get a notification whenever the status or response changes.</li>
+            </ol>
+          </div>
+        </aside>
+      </div>
+
+      <section class="mt-5" aria-labelledby="mineTitle">
+        <div class="section-head"><h2 id="mineTitle">Your grievances</h2></div>
+        <div id="mine"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/grievances.js"></script>
+</body>
+</html>

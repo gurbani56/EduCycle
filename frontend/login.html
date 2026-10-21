@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in | EduCycle</title>
+  <meta name="description" content="Log in or create a student account on EduCycle.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="login">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <div class="auth-wrap">
+      <aside class="auth-aside">
+        <h2>Share what you have. Borrow what you need.</h2>
+        <p>One account lets you list resources, request items from other students and follow every exchange.</p>
+        <ul>
+          <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span>Exchanges happen only at admin-approved pickup points.</span></li>
+          <li><i class="bi bi-bell" aria-hidden="true"></i><span>You are notified when your request is accepted, declined or completed.</span></li>
+          <li><i class="bi bi-flag" aria-hidden="true"></i><span>Report a problem at any time and follow the admin&rsquo;s response.</span></li>
+        </ul>
+      </aside>
+
+      <div class="auth-main">
+        <div class="auth-box">
+          <h1 id="authTitle">Log in</h1>
+          <p class="text-muted mb-4" id="authSub">Welcome back. Log in with your student account.</p>
+
+          <div class="alert alert-warning d-none" id="reasonAlert" role="alert"></div>
+
+          <ul class="nav nav-underline mb-4" role="tablist">
+            <li class="nav-item" role="presentation"><button class="nav-link active" id="tab-login" type="button" role="tab" aria-controls="pane-login" aria-selected="true">Log in</button></li>
+            <li class="nav-item" role="presentation"><button class="nav-link" id="tab-register" type="button" role="tab" aria-controls="pane-register" aria-selected="false">Create account</button></li>
+          </ul>
+
+          <div id="pane-login" role="tabpanel" aria-labelledby="tab-login">
+            <form id="loginForm" novalidate>
+              <div class="form-alert d-none"></div>
+              <div class="mb-3">
+                <label class="form-label" for="loginEmail">Email</label>
+                <input class="form-control" type="email" id="loginEmail" name="email" autocomplete="email" required placeholder="name@college.edu">
+                <div class="invalid-feedback" data-error-for="email"></div>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="loginPassword">Password</label>
+                <div class="input-group">
+                  <input class="form-control" type="password" id="loginPassword" name="password" autocomplete="current-password" required>
+                  <button class="btn btn-outline-secondary" type="button" data-toggle-password="loginPassword" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye" aria-hidden="true"></i></button>
+                </div>
+                <div class="invalid-feedback" data-error-for="password"></div>
+              </div>
+              <button class="btn btn-primary btn-lg w-100" type="submit">Log in</button>
+            </form>
+            <p class="small text-muted mt-3 mb-0">Forgot your password? Password resets are handled by the EduCycle administrators.</p>
+          </div>
+
+          <div id="pane-register" class="d-none" role="tabpanel" aria-labelledby="tab-register">
+            <form id="registerForm" novalidate>
+              <div class="form-alert d-none"></div>
+              <div class="mb-3">
+                <label class="form-label" for="regName">Full name<span class="req" aria-hidden="true">*</span></label>
+                <input class="form-control" id="regName" name="name" autocomplete="name" maxlength="80" required>
+                <div class="invalid-feedback" data-error-for="name"></div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="regEmail">Email<span class="req" aria-hidden="true">*</span></label>
+                <input class="form-control" type="email" id="regEmail" name="email" autocomplete="email" required placeholder="name@college.edu">
+                <div class="form-text">Use the email you check regularly. It is never shown to other students.</div>
+                <div class="invalid-feedback" data-error-for="email"></div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="regPassword">Password<span class="req" aria-hidden="true">*</span></label>
+                <div class="input-group">
+                  <input class="form-control" type="password" id="regPassword" name="password" autocomplete="new-password" required aria-describedby="pwHelp">
+                  <button class="btn btn-outline-secondary" type="button" data-toggle-password="regPassword" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye" aria-hidden="true"></i></button>
+                </div>
+                <div class="form-text" id="pwHelp">At least 8 characters, including a letter and a number.</div>
+                <div class="invalid-feedback" data-error-for="password"></div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-sm-7"><label class="form-label" for="regDept">Department<span class="req" aria-hidden="true">*</span></label><select class="form-select" id="regDept" name="department" required></select><div class="invalid-feedback" data-error-for="department"></div></div>
+                <div class="col-sm-5"><label class="form-label" for="regSem">Semester<span class="req" aria-hidden="true">*</span></label><select class="form-select" id="regSem" name="semester" required></select><div class="invalid-feedback" data-error-for="semester"></div></div>
+              </div>
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="regTerms" name="terms" required>
+                <label class="form-check-label small" for="regTerms">I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of use</a> and have read the <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a>.</label>
+                <div class="invalid-feedback" data-error-for="terms"></div>
+              </div>
+              <button class="btn btn-primary btn-lg w-100" type="submit">Create account</button>
+            </form>
+          </div>
+          <p class="small text-muted mt-4 mb-0 text-center">Are you an administrator? <a href="admin-login.html">Use the admin login</a>.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/login.js"></script>
+</body>
+</html>

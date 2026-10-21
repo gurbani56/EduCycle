@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>List a resource | EduCycle</title>
+  <meta name="description" content="Donate, lend or exchange a textbook, calculator, notes or lab equipment with another student.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="listings" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container container-form">
+        <nav aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="my-listings.html">My listings</a></li><li class="breadcrumb-item active" aria-current="page" id="crumb">New listing</li></ol></nav>
+        <h1 id="pageTitle">List a resource</h1>
+        <p id="pageSub">Share something another student can use. Fields marked <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+      </div>
+    </header>
+
+    <div class="container container-form page-body">
+      <form id="resourceForm" class="panel" novalidate>
+        <div class="form-alert d-none"></div>
+
+        <section class="form-section" aria-labelledby="s1">
+          <div class="form-section-head"><h2 id="s1">About the item</h2><p>A clear title and honest description help students decide quickly.</p></div>
+          <div class="mb-3">
+            <label class="form-label" for="title">Title<span class="req" aria-hidden="true">*</span></label>
+            <input class="form-control" id="title" name="title" maxlength="80" required placeholder="e.g. Engineering Mathematics III textbook" aria-describedby="titleHelp">
+            <div class="form-text" id="titleHelp">Include the edition or model where it matters.</div>
+            <div class="invalid-feedback" data-error-for="title"></div>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-sm-6">
+              <label class="form-label" for="category">Category<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="category" name="category" required></select>
+              <div class="invalid-feedback" data-error-for="category"></div>
+            </div>
+            <div class="col-sm-6">
+              <label class="form-label" for="condition">Condition<span class="req" aria-hidden="true">*</span></label>
+              <select class="form-select" id="condition" name="condition" required></select>
+              <div class="invalid-feedback" data-error-for="condition"></div>
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="description">Description<span class="req" aria-hidden="true">*</span></label>
+            <textarea class="form-control" id="description" name="description" rows="5" maxlength="600" required placeholder="What is included, how it has been used, any marks or missing parts, and any conditions for borrowing."></textarea>
+            <div class="d-flex justify-content-between"><div class="invalid-feedback" data-error-for="description"></div><span class="char-count ms-auto" id="descCount"></span></div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="s2">
+          <div class="form-section-head"><h2 id="s2">How you are sharing it<span class="req" aria-hidden="true">*</span></h2><p>Choose one. You can change this later while there is no accepted exchange.</p></div>
+          <div class="choice-cards" role="radiogroup" aria-labelledby="s2" data-field="type">
+            <div class="choice-card"><input type="radio" name="type" id="tDonate" value="Donate"><label for="tDonate"><strong><i class="bi bi-gift" aria-hidden="true"></i>Donate</strong><span>Give it away for free. The other student keeps it.</span></label></div>
+            <div class="choice-card"><input type="radio" name="type" id="tLend" value="Lend"><label for="tLend"><strong><i class="bi bi-arrow-left-right" aria-hidden="true"></i>Lend</strong><span>They borrow it and return it to you afterwards.</span></label></div>
+            <div class="choice-card"><input type="radio" name="type" id="tExchange" value="Exchange"><label for="tExchange"><strong><i class="bi bi-shuffle" aria-hidden="true"></i>Exchange</strong><span>Swap it for something you need. Mention what in the description.</span></label></div>
+          </div>
+          <div class="invalid-feedback" data-error-for="type"></div>
+          <div class="row g-3 mt-1">
+            <div class="col-sm-4">
+              <label class="form-label" for="quantity">Quantity<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-control" type="number" id="quantity" name="quantity" min="1" max="20" value="1" required>
+              <div class="invalid-feedback" data-error-for="quantity"></div>
+            </div>
+            <div class="col-sm-8 d-none" id="statusWrap">
+              <label class="form-label" for="status">Availability</label>
+              <select class="form-select" id="status" name="status"><option value="Available">Available, students can request it</option><option value="Unavailable">Unavailable, hidden from &ldquo;Available now&rdquo;</option></select>
+              <div class="form-text" id="statusHelp"></div>
+              <div class="invalid-feedback" data-error-for="status"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section" aria-labelledby="s3">
+          <div class="form-section-head"><h2 id="s3">Pickup point<span class="req" aria-hidden="true">*</span></h2><p>Only locations approved by an administrator can be used for exchanges.</p></div>
+          <label class="form-label" for="location">Approved pickup point</label>
+          <select class="form-select" id="location" name="location" required aria-describedby="locHelp"></select>
+          <div class="invalid-feedback" data-error-for="location"></div>
+          <div class="form-text" id="locHelp">Can&rsquo;t find a suitable spot? <button type="button" class="btn btn-link btn-sm p-0 align-baseline" data-bs-toggle="modal" data-bs-target="#suggestModal">Suggest a new location</button>. It can be used once an administrator approves it.</div>
+          <div class="loc-card mt-3 d-none" id="locPreview"></div>
+          <div class="alert alert-warning mt-3 d-none" id="noLocations"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i><div>There are no approved pickup points yet, so listings cannot be published. <button type="button" class="btn btn-link btn-sm p-0 align-baseline" data-bs-toggle="modal" data-bs-target="#suggestModal">Suggest a location</button> and try again once it is approved.</div></div>
+        </section>
+
+        <section class="form-section" aria-labelledby="s4">
+          <div class="form-section-head"><h2 id="s4">Who it suits <span class="opt fw-normal text-muted small">(optional)</span></h2><p>Helps students in the right course find it.</p></div>
+          <div class="row g-3">
+            <div class="col-sm-7"><label class="form-label" for="department">Department</label><select class="form-select" id="department" name="department"></select><div class="invalid-feedback" data-error-for="department"></div></div>
+            <div class="col-sm-5"><label class="form-label" for="semester">Semester</label><select class="form-select" id="semester" name="semester"></select><div class="invalid-feedback" data-error-for="semester"></div></div>
+          </div>
+        </section>
+
+        <div class="d-flex flex-wrap gap-2 pt-3 border-top">
+          <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Publish listing</button>
+          <a class="btn btn-outline-secondary btn-lg" href="my-listings.html">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Suggest location -->
+    <div class="modal fade" id="suggestModal" tabindex="-1" aria-labelledby="suggestTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered"><div class="modal-content">
+        <form id="suggestForm" novalidate>
+          <div class="modal-header"><h2 class="modal-title" id="suggestTitle">Suggest a new pickup point</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+          <div class="modal-body">
+            <div class="form-alert d-none"></div>
+            <p class="small text-muted">An administrator reviews every suggestion. You will be notified when it is approved or rejected. Choose a public, well-lit spot on campus.</p>
+            <div class="mb-3"><label class="form-label" for="sgName">Location name<span class="req" aria-hidden="true">*</span></label><input class="form-control" id="sgName" name="name" maxlength="80" placeholder="e.g. Central library entrance"><div class="invalid-feedback" data-error-for="name"></div></div>
+            <div class="mb-3"><label class="form-label" for="sgArea">Campus area or building<span class="req" aria-hidden="true">*</span></label><input class="form-control" id="sgArea" name="area" maxlength="120" placeholder="e.g. Academic block, ground floor"><div class="invalid-feedback" data-error-for="area"></div></div>
+            <div><label class="form-label" for="sgDesc">How to find it<span class="opt">(optional)</span></label><textarea class="form-control" id="sgDesc" name="description" rows="2" maxlength="400" placeholder="Landmarks, opening hours, anything that helps."></textarea><div class="invalid-feedback" data-error-for="description"></div></div>
+          </div>
+          <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary" id="sgSubmit">Submit for review</button></div>
+        </form>
+      </div></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/suggest-location.js"></script>
+  <script src="assets/js/pages/list-resource.js"></script>
+</body>
+</html>

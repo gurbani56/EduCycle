@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notifications | EduCycle</title>
+  <meta name="description" content="Your EduCycle notifications.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="notifications" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container container-narrow d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div><h1>Notifications</h1><p>Updates about your requests, pickup point suggestions and grievances.</p></div>
+        <button class="btn btn-outline-secondary btn-sm" type="button" id="readAll"><i class="bi bi-check2-all" aria-hidden="true"></i>Mark all as read</button>
+      </div>
+    </header>
+    <div class="container container-narrow page-body">
+      <ul class="nav nav-underline mb-4" id="tabs" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" type="button" role="tab" aria-selected="true" data-unread="false">All</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" type="button" role="tab" aria-selected="false" data-unread="true">Unread<span class="count" id="unreadCount"></span></button></li>
+      </ul>
+      <div id="list"></div>
+      <div class="mt-4" id="pager"></div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/notifications.js"></script>
+</body>
+</html>

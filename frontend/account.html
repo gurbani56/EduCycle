@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Account settings | EduCycle</title>
+  <meta name="description" content="Manage your EduCycle profile and password.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link href="assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body data-active="account" data-auth="student">
+  <div id="site-nav"></div>
+
+  <main id="main" tabindex="-1">
+    <header class="page-header">
+      <div class="container"><h1>Account settings</h1><p>Your profile, password and a record of your recent activity.</p></div>
+    </header>
+    <div class="container page-body">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <form class="panel" id="profileForm" novalidate>
+            <h2 class="panel-title"><i class="bi bi-person" aria-hidden="true"></i>Profile</h2>
+            <div class="form-alert d-none"></div>
+            <div class="mb-3"><label class="form-label" for="pfName">Full name</label><input class="form-control" id="pfName" name="name" maxlength="80" autocomplete="name"><div class="form-text">Shown to students you exchange with.</div><div class="invalid-feedback" data-error-for="name"></div></div>
+            <div class="mb-3"><label class="form-label" for="pfEmail">Email</label><input class="form-control" id="pfEmail" disabled><div class="form-text">Used to sign in. Never shown to other students.</div></div>
+            <div class="row g-3 mb-3">
+              <div class="col-sm-7"><label class="form-label" for="pfDept">Department</label><select class="form-select" id="pfDept" name="department"></select><div class="invalid-feedback" data-error-for="department"></div></div>
+              <div class="col-sm-5"><label class="form-label" for="pfSem">Semester</label><select class="form-select" id="pfSem" name="semester"></select><div class="invalid-feedback" data-error-for="semester"></div></div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save profile</button>
+          </form>
+
+          <form class="panel" id="passwordForm" novalidate>
+            <h2 class="panel-title"><i class="bi bi-key" aria-hidden="true"></i>Change password</h2>
+            <div class="form-alert d-none"></div>
+            <div class="mb-3"><label class="form-label" for="pwCurrent">Current password</label><input class="form-control" type="password" id="pwCurrent" name="currentPassword" autocomplete="current-password"><div class="invalid-feedback" data-error-for="currentPassword"></div></div>
+            <div class="mb-3"><label class="form-label" for="pwNew">New password</label><input class="form-control" type="password" id="pwNew" name="newPassword" autocomplete="new-password" aria-describedby="pwNewHelp"><div class="form-text" id="pwNewHelp">At least 8 characters, including a letter and a number.</div><div class="invalid-feedback" data-error-for="newPassword"></div></div>
+            <div class="mb-3"><label class="form-label" for="pwConfirm">Confirm new password</label><input class="form-control" type="password" id="pwConfirm" name="confirm" autocomplete="new-password"><div class="invalid-feedback" data-error-for="confirm"></div></div>
+            <button class="btn btn-outline-secondary" type="submit">Update password</button>
+          </form>
+        </div>
+        <aside class="col-lg-5">
+          <div class="panel">
+            <h2 class="panel-title"><i class="bi bi-clock-history" aria-hidden="true"></i>Recent activity</h2>
+            <div id="log"></div>
+          </div>
+          <div class="panel">
+            <h2 class="panel-title"><i class="bi bi-shield-lock" aria-hidden="true"></i>Your data</h2>
+            <p class="small mb-2">Other students see your name and your listings. Your email address is only visible to you and the administrators.</p>
+            <p class="small mb-0">Read the <a href="privacy.html">Privacy policy</a> to see what EduCycle stores and how to ask for your account to be removed.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/pages/account.js"></script>
+</body>
+</html>
